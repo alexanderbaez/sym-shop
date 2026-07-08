@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto | SyM Shop</title>
+
+    <link rel="icon" type="image/png" href="../images/LOGO.png">
+    <link rel="apple-touch-icon" href="../images/LOGO.png">
+
+    <meta name="description" content="SyM Shop: Tu tienda de ropa y regalería en San Juan.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #240046;
+        }
+        /* Estilos específicos para la interacción del Selector de Talles */
+        .btn-talle-caja {
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #240046;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-talle-caja:hover {
+            border-color: #7b2cbf;
+        }
+        .btn-talle-caja.seleccionado {
+            background: #7b2cbf;
+            border-color: #7b2cbf;
+            color: #fff;
+        }
+        /* Miniaturas de Galería */
+        .img-miniatura {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.08);
+            opacity: 0.6;
+            transition: all 0.2s ease;
+        }
+        .img-miniatura:hover, .img-miniatura.activa {
+            opacity: 1;
+            border-color: #7b2cbf;
+        }
+        #det-imagen-principal {
+            cursor: zoom-in;
+        }
+        /* Tarjetas de Similares (Estilo Mercado Libre / Minimalista) */
+        .similares-card {
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: #fff;
+        }
+        .similares-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top shadow-sm" id="mainNav" style="background: #ffffff; border-bottom: 1px solid #eee;">
+            <div class="container">
+                <button class="navbar-toggler border-0 ps-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-bars fa-lg" style="color: #7b2cbf;"></i>
+                </button>
+
+                    <a class="navbar-brand d-flex align-items-center text-decoration-none mx-auto mx-lg-0" href="/index.html">
+                        <img id="logo-header" src="/images/LogoSyM.png" alt="SyM Logo" style="height: 45px !important; width: auto !important;" class="me-2">
+                        <span class="fw-bold" style="letter-spacing: 1px; font-size: 1.3rem; color: #7b2cbf; font-family: 'Montserrat', sans-serif;">SyM Shop</span>
+                    </a>
+
+                <div class="d-flex align-items-center order-lg-last">
+                    <a class="nav-link position-relative px-2" href="#" id="cartIcon" data-bs-toggle="modal" data-bs-target="#cartModal" style="color: #7b2cbf;">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem; display: none;">0</span>
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto fw-medium text-center" style="font-size: 0.9rem;">
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="/index.html" style="color: #240046;">INICIO</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDropdownRopa" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #240046;">
+                                ROPA
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm text-center text-lg-start" aria-labelledby="navbarDropdownRopa" style="background: #ffffff; border-radius: 8px;">
+                                <li><a class="dropdown-item py-2" href="../index.html?cat=mujer" style="font-size: 0.85rem; color: #240046;">Colección Mujer</a></li>
+                                <li><a class="dropdown-item py-2" href="../index.html?cat=hombre" style="font-size: 0.85rem; color: #240046;">Colección Hombre</a></li>
+                                <li><a class="dropdown-item py-2" href="../index.html?cat=ninos" style="font-size: 0.85rem; color: #240046;">Línea Infantil</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="../index.html?cat=regaleria" style="color: #240046;">REGALERÍA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="../index.html#nosotros-seccion" style="color: #240046;">NOSOTROS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mb-5" style="padding-top: 110px;">
+        <div class="mb-4">
+            <a href="../index.html" class="text-decoration-none small fw-medium text-uppercase" style="color: #7b2cbf;">
+                <i class="fas fa-chevron-left me-2"></i> Volver al catálogo
+            </a>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-12 col-md-6">
+                <div class="position-relative mb-3 bg-light rounded overflow-hidden shadow-sm">
+                    <span id="det-etiqueta" class="badge bg-danger position-absolute top-0 start-0 m-3 text-uppercase" style="display: none; z-index: 10; font-size: 0.7rem; letter-spacing: 1px;"></span>
+                    <img id="det-imagen-principal" src="" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;" alt="Cargando producto...">
+                </div>
+                <div id="det-galeria-miniaturas" class="d-flex gap-2 overflow-x-auto py-1"></div>
+            </div>
+
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                <h1 id="det-nombre" class="h2 fw-bold mb-2" style="font-family: 'Montserrat', sans-serif; color: #240046;">---</h1>
+                
+                <div class="mb-4">
+                    <div class="d-flex align-items-baseline mb-1">
+                        <span class="text-muted small me-2 text-uppercase font-monospace" style="font-size: 0.65rem;">Precio Lista:</span>
+                        <span id="det-precio-minorista" class="fs-4 fw-bold" style="color: #240046;">$-</span>
+                    </div>
+                    <div id="contenedor-precio-mayorista" class="align-items-baseline" style="display: none !important;">
+                        <span class="text-success small me-2 text-uppercase font-monospace" style="font-size: 0.65rem; font-weight: 600;">X Mayor (3+ pzs):</span>
+                        <span id="det-precio-mayorista" class="fs-4 fw-bold text-success">$-</span>
+                    </div>
+                </div>
+
+                <hr class="my-3 opacity-25">
+
+                <div class="mb-4">
+                    <h6 class="text-uppercase fw-bold text-muted" style="font-size: 0.7rem; letter-spacing: 1px;">Descripción</h6>
+                    <p id="det-descripcion" class="text-secondary small lh-base">---</p>
+                </div>
+
+                <div id="contenedor-talles" class="mb-4" style="display: none;">
+                    <h6 class="text-uppercase fw-bold text-muted mb-2" style="font-size: 0.7rem; letter-spacing: 1px;">Seleccioná tu Talle</h6>
+                    <div id="det-talles-opciones" class="d-flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="mb-4">
+                    <h6 class="text-uppercase fw-bold text-muted mb-2" style="font-size: 0.7rem; letter-spacing: 1px;">Cantidad</h6>
+                    <div class="d-flex align-items-center border px-2 bg-white" style="width: fit-content; height: 38px; border-radius: 4px;">
+                        <button class="btn btn-sm p-0 border-0 text-muted" style="width:28px; font-size: 1rem;" onclick="cambiarCantidadDetalle(-1)">−</button>
+                        <input id="det-cantidad-input" type="text" class="form-control form-control-sm text-center border-0 font-monospace bg-transparent" value="1" readonly style="width: 40px; font-size: 0.9rem; color: #000; font-weight: 600;">
+                        <button class="btn btn-sm p-0 border-0 text-muted" style="width:28px; font-size: 1rem;" onclick="cambiarCantidadDetalle(1)">+</button>
+                    </div>
+                </div>
+
+                <button id="det-btn-agregar" class="btn text-white w-100 py-3 text-uppercase fw-bold tracking-wide shadow-sm" style="font-size: 0.85rem; background-color: #7b2cbf; border: none; border-radius: 50px; letter-spacing: 1px;">
+                    <i class="fas fa-shopping-bag me-2"></i> Añadir al Carrito
+                </button>
+            </div>
+        </div>
+
+        <hr class="my-5 opacity-25">
+
+        <section class="mt-5 pb-5">
+            <h4 class="fw-bold mb-4 text-center text-md-start" style="font-family: 'Montserrat', sans-serif; color: #240046; font-size: 1.3rem;">
+                Quienes vieron este producto también compraron
+            </h4>
+            <div id="contenedor-similares" class="row row-cols-2 row-cols-md-4 g-3">
+                </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 16px; overflow: hidden;">
+                <div class="modal-header border-0 text-white" style="background: #7b2cbf;">
+                    <h5 class="modal-title text-uppercase fw-bold" id="cartModalLabel" style="letter-spacing: 1px; font-size: 0.85rem;">
+                        <i class="fas fa-shopping-bag me-2"></i> Mi Carrito
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-3" id="cart-items">
+                    </div>
+                <div class="px-3 pb-2 bg-white">
+                    <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 0.7rem;">
+                        <span id="ux-progress-text" class="text-muted">Añadiendo artículos a la bolsa...</span>
+                        <span id="ux-progress-percent" class="fw-bold text-dark">0/3</span>
+                    </div>
+                    <div class="progress" style="height: 6px; border-radius: 10px; background-color: #eee;">
+                        <div id="ux-progress-bar-fill" class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light p-3 d-flex flex-column" id="cart-total">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-white py-4" style="background-color: #240046; font-size: 0.8rem;">
+        <div class="container text-center">
+            <p class="mb-2 fw-semibold">SyM Shop - Ropa & Regalería</p>
+            <div class="d-flex justify-content-center gap-3 fs-5 mb-3">
+                <a href="https://www.instagram.com/" target="_blank" class="text-white opacity-75"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5492646121771" target="_blank" class="text-white opacity-75"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="mb-0 opacity-50" style="font-size: 0.7rem;">&copy; 2026 SYM SHOP. San Juan, Argentina.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5492646121771" target="_blank" class="position-fixed bottom-0 end-0 m-3 d-flex align-items-center justify-content-center text-white shadow-lg" style="background: #25D366; width: 55px; height: 55px; border-radius: 50%; z-index: 1030; text-decoration: none; font-size: 1.8rem;">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/productos.js"></script>
+    <script src="../js/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof renderizarListaCarrito === 'function') {
+                renderizarListaCarrito();
+            }
+        });
+    </script>
+</body>
+</html>

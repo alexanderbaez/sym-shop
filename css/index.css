@@ -1,0 +1,259 @@
+/* ==========================================================================
+   INDEX.CSS - SYM SHOP (Versión Adaptada al Figma 2026 - Consolidada)
+   ========================================================================== */
+
+/* --- PALETA DE COLORES Y VARIABLES FIGMA --- */
+:root {
+    --sym-primary: #7b2cbf;        /* Violeta vibrante de los headers y botones */
+    --sym-primary-dark: #5a189a;   /* Violeta oscuro para estados activos */
+    --sym-light-bg: #f3e8ff;       /* Fondo lila translúcido del Figma */
+    --sym-card-bg: #ffffff;       /* Fondo blanco puro para las tarjetas */
+    --sym-text-dark: #240046;     /* Texto oscuro principal */
+    --sym-text-muted: #7b7b7b;    /* Gris para descripciones secundarias */
+    --sym-radius-lg: 16px;         /* Curvatura grande para tarjetas del Figma */
+    --sym-radius-sm: 8px;          /* Curvatura chica para botones */
+    --transition-fast: all 0.2s ease-in-out;
+}
+
+/* --- REGLAS GENERALES Y FUENTES --- */
+body {
+    background-color: #ffffff;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    color: var(--sym-text-dark);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--sym-text-dark);
+}
+
+/* --- NAV BAR (Estilo Figma: Fijo, Blanco y Limpio) --- */
+#mainNav {
+    background-color: #ffffff !important;
+    transition: var(--transition-fast);
+}
+
+#mainNav .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: var(--transition-fast);
+}
+
+#mainNav .nav-link:hover {
+    color: var(--sym-primary) !important;
+}
+
+/* --- PÍLDORAS DE FILTROS HORIZONTALES DESLIZABLES (Figma Style) --- */
+.pildora-filtro {
+    background-color: #ffffff;
+    color: var(--sym-primary);
+    border: 1.5px solid var(--sym-primary);
+    border-radius: 50px; 
+    padding: 6px 18px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.pildora-filtro.activa {
+    background-color: var(--sym-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(123, 44, 191, 0.25);
+}
+
+#contenedor-filtros::-webkit-scrollbar {
+    display: none;
+}
+#contenedor-filtros {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* --- ESTRUCTURA DE TARJETAS DE PRODUCTO (Figma Perfect) --- */
+.products-listing {
+    background-color: #ffffff; 
+}
+
+.product-card {
+    background: var(--sym-card-bg);
+    border: none !important;
+    border-radius: var(--sym-radius-lg) !important;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(36, 0, 70, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(123, 44, 191, 0.2); 
+}
+
+.card-img-container, .product-img-top {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    background-color: #ffffff;
+    object-fit: cover;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .card-img-container img {
+    transform: scale(1.04);
+}
+
+/* --- DETALLES INTERNOS DE TARJETA --- */
+.product-card .card-title {
+    color: var(--sym-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.product-card .card-text {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    height: 36px; 
+    overflow: hidden;
+    color: var(--sym-text-muted);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Botones y Selectores */
+.btn-sym-primary {
+    background-color: var(--sym-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--sym-radius-sm);
+    transition: var(--transition-fast);
+}
+
+.btn-sym-primary:hover {
+    background-color: var(--sym-primary-dark);
+    color: #ffffff;
+}
+
+.btn-sym-primary:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+.product-card .form-select {
+    border-color: var(--sym-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: var(--sym-radius-sm);
+}
+
+.product-card .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(123, 44, 191, 0.2); 
+    border-color: var(--sym-primary);
+}
+
+.price-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--sym-text-dark);
+}
+
+/* --- COMPONENTES AUXILIARES (Carrito y Carrusel) --- */
+.modal-content {
+    font-family: 'Poppins', sans-serif;
+}
+
+.cart-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: var(--sym-radius-sm);
+}
+
+.product-carousel .carousel-control-prev-icon,
+.product-carousel .carousel-control-next-icon {
+    background-color: rgba(123, 44, 191, 0.7); 
+    border-radius: 50%;
+    padding: 10px;
+    background-size: 50%;
+}
+
+/* --- MEDIA QUERIES PARA CELULARES --- */
+@media (max-width: 576px) {
+    .card-img-container, .product-img-top {
+        height: 150px; 
+    }
+}
+
+/* ==========================================================================
+   PORTADA 100% ANCHO DE PANTALLA (SOLUCIÓN FULL BANNER)
+   ========================================================================== */
+#portada-principal {
+    margin-top: 65px;
+    min-height: 480px; /* Le damos buena presencia de alto en PC */
+    position: relative;
+    overflow: hidden;
+    
+    /* Cargamos tu imagen ocupando TODO el contenedor */
+    background-image: url('../images/PORTADA (2).png');
+    background-repeat: no-repeat;
+    background-size: cover; /* Fuerza a la imagen a estirarse de punta a punta */
+    
+    /* El secreto: Anclamos la foto a la derecha para que luzca la modelo y el sillón */
+    background-position: 75% center; 
+    transition: all 0.3s ease-in-out;
+}
+
+/* En monitores de PC normales o laptops, ajustamos el encuadre */
+@media (min-width: 992px) {
+    #portada-principal {
+        min-height: 520px;
+        background-position: right center; /* Se alinea perfecto contra el borde derecho */
+    }
+}
+
+/* En Celulares y Pantallas Chicas */
+@media (max-width: 767.98px) {
+    #portada-principal {
+        min-height: 400px;
+        background-position: 65% center; /* Centramos un poco más a la modelo */
+    }
+    
+    /* Filtro lila semitransparente que solo se activa en el celular */
+    /* Esto hace que el fondo no compita con la lectura del texto en pantallas chicas */
+    #portada-principal::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(243, 232, 255, 0.75);
+        z-index: 1;
+    }
+
+    /* Centramos el texto en el celu para que quede estético */
+    .info-portada {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .info-portada p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
