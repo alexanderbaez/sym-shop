@@ -1,7 +1,3 @@
-/* ==========================================================================
-   SCRIPT.JS - SYM SHOP (Controlador Oficial del Carrito y Catálogo)
-   ========================================================================== */
-
 // --- CONFIGURACIÓN Y ESTADO CONSTANTE ---
 const CONFIG = {
     WHATSAPP_NUMBER: '5492646121771',
@@ -40,22 +36,25 @@ function enrutarPantalla() {
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const idProductoDetalle = urlParams.get('id');
-    const categoriaBuscada = urlParams.get('cat');
+    const categoriaBuscada = urlParams.get('cat'); // Lee "?cat=mujer", "?cat=hombre", etc.
+    const productoId = urlParams.get('id'); // Lee "?id=1", "?id=2", etc.
     const path = window.location.pathname;
 
+    // Detectamos si estamos en el index o en la página de detalles
     const esDetalle = path.endsWith('producto.html') || path.endsWith('detalle.html');
     const esIndex = !esDetalle && !path.endsWith('catalogo.html');
 
     if (esDetalle) {
-        if (idProductoDetalle) {
-            cargarPantallaDetalle(idProductoDetalle);
+        // CORRECCIÓN INTERNA: Si detecta que es detalle, busca el ID de la URL y renderiza
+        if (productoId) {
+            cargarPantallaDetalle(productoId);
         } else {
-            window.location.href = window.location.origin + window.location.pathname.replace(/\/html\/(producto|detalle)\.html$/, '/index.html');
+            console.warn("No se encontró ningún ID de producto en la URL.");
         }
         return;
     }
 
+    // Si estamos en la Home (index.html), procesamos el catálogo con la categoría de la URL
     const contenedor = document.getElementById("contenedor-productos");
     if (contenedor) {
         procesarCatalogoPrincipal(categoriaBuscada, esIndex);
@@ -97,29 +96,46 @@ const obtenerUnidadesTotales = () => estado.carrito.reduce((acc, item) => acc + 
 // --- RENDERIZADO DE CATÁLOGO ---
 function procesarCatalogoPrincipal(categoria, esIndex) {
     const tituloSeccion = document.querySelector('.section-title');
-    const portada = document.getElementById('portada-principal');
+    const subtituloSeccion = document.getElementById('subtitulo-catalogo');
+    const portada = document.getElementById('portada-principal'); // El banner "Comodidad que inspira"
     let productosFiltrados = PRODUCTOS;
 
+    // SI EL USUARIO HIZO CLIC EN UNA CATEGORÍA DEL MENÚ (mujer, hombre, ninos, regaleria)
     if (categoria) {
         const catLower = categoria.toLowerCase();
+        // Filtramos el array de productos usando la propiedad "categoria" (¡Ignoramos la subcategoría!)
         productosFiltrados = PRODUCTOS.filter(p => p.categoria.toLowerCase() === catLower);
-        if (tituloSeccion) tituloSeccion.innerText = `Colección ${categoria.charAt(0).toUpperCase() + categoria.slice(1)}`;
         
+        // Cambiamos los títulos del index dinámicamente
+        if (tituloSeccion) tituloSeccion.innerText = `Colección ${categoria.charAt(0).toUpperCase() + categoria.slice(1)}`;
+        if (subtituloSeccion) subtituloSeccion.innerText = "Catálogo Filtrado";
+        
+        // ¡MAGIA! Ocultamos la portada principal para que se note que cambió de sección
         if (portada) portada.style.setProperty("display", "none", "important");
+        
+        // Bajamos la pantalla suavemente hasta el catálogo para que el usuario vea los productos directo
+        setTimeout(() => {
+            const seccion = document.getElementById('catalogo-seccion');
+            if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
         
     } else if (esIndex) {
-        const destacados = PRODUCTOS.filter(p => p.etiqueta && /VENDIDO|DESTACADO|IMPERDIBLE|TENDENCIA/i.test(p.etiqueta));
+        // SI ESTÁ EN INICIO COMPLETO: Mostramos TODOS los productos que tengan CUALQUIER etiqueta
+        // Esto va a capturar "🔥 MÁS VENDIDO", "⚡ POCO STOCK", "🔥 NUEVO", etc.
+        const destacados = PRODUCTOS.filter(p => p.etiqueta && p.etiqueta.trim() !== "");
+        
+        // Si por alguna razón no hay ninguno con etiqueta, muestra los primeros 4 por defecto
         productosFiltrados = destacados.length > 0 ? destacados : PRODUCTOS.slice(0, 4);
+        
         if (tituloSeccion) tituloSeccion.innerText = "Productos Destacados";
-        
+        if (subtituloSeccion) subtituloSeccion.innerText = "Selección Especial";
         if (portada) portada.style.setProperty("display", "block", "important");
-        
-    } else {
-        if (tituloSeccion) tituloSeccion.innerText = "Nuestro Catálogo Completo";
-        if (portada) portada.style.setProperty("display", "none", "important");
     }
 
-    dibujarProductos(productosFiltrados, esIndex);
+    // Llamás a tu función existente que dibuja las tarjetitas en el HTML
+    if (typeof dibujarProductos === 'function') {
+        dibujarProductos(productosFiltrados, esIndex);
+    }
 }
 
 function dibujarProductos(lista, esIndex) {
@@ -139,7 +155,8 @@ function dibujarProductos(lista, esIndex) {
         divCol.className = "col-6 col-md-4 col-lg-3 mb-3 d-flex align-items-stretch product-item-card";
         divCol.setAttribute('data-talles', p.talles || "");
         
-        const linkDetalle = esIndex ? `./html/producto.html?id=${p.id}` : `./producto.html?id=${p.id}`;
+        // CORRECCIÓN INTERNA: Modificado para enlazar a detalle.html en lugar de producto.html
+        const linkDetalle = esIndex ? `./html/detalle.html?id=${p.id}` : `./detalle.html?id=${p.id}`;
         
         let imgUrl = p.imagenes[0];
         if (!esIndex && imgUrl.startsWith('./')) {
@@ -296,7 +313,9 @@ function cargarPantallaDetalle(id) {
         let indiceImagenActiva = 0;
 
         imgPrincipal.onclick = () => {
-            abrirZoomSyM(rutasCorregidas, indiceImagenActiva);
+            if (typeof abrirZoomSyM === 'function') {
+                abrirZoomSyM(rutasCorregidas, indiceImagenActiva);
+            }
         };
 
         if (contenedorMiniaturas) {
@@ -395,9 +414,8 @@ function cargarPantallaDetalle(id) {
         similares.forEach(sim => {
             const divCol = document.createElement('div');
             divCol.className = 'col';
-            const imgSim = sim.imagenes && sim.imagenes[0] ? sim.imagenes[0].replace(/^\.\//, '../') : '';
+            const imgSim = sim.imagenes && sim.imagenes[0] ? corregirRuta(sim.imagenes[0]) : '';
             
-            // Render de precios tachados también en la grilla de similares si corresponde
             let preciosSimilaresHtml = `<span>$${sim.precioMinorista.toLocaleString('es-AR')}</span>`;
             if (sim.precioOriginal && sim.precioOriginal > sim.precioMinorista) {
                 preciosSimilaresHtml = `
@@ -408,13 +426,14 @@ function cargarPantallaDetalle(id) {
                 preciosSimilaresHtml = `<span class="text-dark fw-bold">$${sim.precioMinorista.toLocaleString('es-AR')}</span>`;
             }
 
+            // Enlace corregido a 'detalle.html'
             divCol.innerHTML = `
                 <div class="card similares-card h-100 rounded-0 p-2">
-                    <a href="producto.html?id=${sim.id}" class="text-decoration-none">
+                    <a href="detalle.html?id=${sim.id}" class="text-decoration-none">
                         <img src="${imgSim}" class="card-img-top rounded-0" style="height: 180px; object-fit: cover;" alt="${sim.nombre}">
                     </a>
                     <div class="card-body p-2 text-center d-flex flex-column justify-content-between">
-                        <a href="producto.html?id=${sim.id}" class="text-decoration-none text-dark">
+                        <a href="detalle.html?id=${sim.id}" class="text-decoration-none text-dark">
                             <h6 class="text-uppercase mb-1" style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${sim.nombre}</h6>
                         </a>
                         <div class="mt-1" style="font-size: 0.85rem;">
@@ -500,6 +519,10 @@ window.renderizarListaCarrito = function () {
     const resCalculo = calcularTotalCarrito();
     const unidadesTotales = obtenerUnidadesTotales();
 
+    // Detectamos en qué nivel de carpeta estamos para corregir la ruta de la imagen
+    const path = window.location.pathname;
+    const esDetalle = path.endsWith('producto.html') || path.endsWith('detalle.html');
+
     let cartHtml = `
         <div class="d-flex justify-content-between align-items-center mb-4 pb-2" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
             <span class="text-uppercase text-muted" style="font-size: 0.65rem; letter-spacing: 1.2px; font-weight: 500;">
@@ -514,16 +537,28 @@ window.renderizarListaCarrito = function () {
     estado.carrito.forEach((item, index) => {
         const prodMatch = PRODUCTOS.find(p => String(p.id) === String(item.id));
         
-        // Evaluamos si aplica precio mayorista o minorista estándar
+        // --- LOGICA DE CORRECCIÓN DE RUTA PARA LA IMAGEN ---
+        let imgUrl = item.imagen;
+        if (esDetalle) {
+            if (imgUrl.startsWith('./')) {
+                imgUrl = imgUrl.replace(/^\.\//, '../');
+            } else if (!imgUrl.startsWith('../') && !imgUrl.startsWith('http')) {
+                imgUrl = `../${imgUrl}`;
+            }
+        } else {
+            // Si estamos en el index.html, aseguramos que empiece con ./ si no lo tiene
+            if (!imgUrl.startsWith('./') && !imgUrl.startsWith('../') && !imgUrl.startsWith('http')) {
+                imgUrl = `./${imgUrl}`;
+            }
+        }
+
         let precioAplicado = prodMatch ? prodMatch.precioMinorista : item.precio;
         if (resCalculo.esMayorista && prodMatch && prodMatch.precioMayorista !== null) {
             precioAplicado = prodMatch.precioMayorista;
         }
 
-        // Sub-vista de precios limpios en la fila del carrito
         let subvistaPreciosCarrito = `<span class="text-muted d-block mt-0.5" style="font-size: 0.7rem;">$${precioAplicado.toLocaleString(CONFIG.LOCALE)} c/u</span>`;
         
-        // Si no es compra mayorista, pero el producto tiene una oferta individual activa, le recordamos el descuento en la bolsa
         if (!resCalculo.esMayorista && prodMatch?.precioOriginal && prodMatch.precioOriginal > prodMatch.precioMinorista) {
             subvistaPreciosCarrito = `
                 <div class="mt-0.5" style="line-height: 1.2;">
@@ -537,7 +572,7 @@ window.renderizarListaCarrito = function () {
             <div class="row align-items-center mb-3 g-2 py-2" style="border-bottom: 1px solid rgba(0,0,0,0.03);">
                 <div class="col-3 col-sm-2">
                     <div style="position: relative; padding-top: 120%; width: 100%; overflow: hidden; background: #fafafa; border: 1px solid rgba(0,0,0,0.04);">
-                        <img src="${item.imagen}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="${item.nombre}">
+                        <img src="${imgUrl}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="${item.nombre}" onerror="this.src='${esDetalle ? '../images/placeholder.png' : './images/placeholder.png'}';">
                     </div>
                 </div>
                 <div class="col-5 col-sm-6 ps-2">
@@ -552,7 +587,7 @@ window.renderizarListaCarrito = function () {
                     <div class="d-flex align-items-center justify-content-end mb-1">
                         <div class="d-flex align-items-center border px-1" style="background: #fff; height: 26px;">
                             <button class="btn btn-sm p-0 border-0 text-muted" style="width:22px; font-size: 0.8rem;" onclick="cambiarCantidad(${index}, -1)">−</button>
-                            <span class="px-2 font-monospace text-dark" style="font-size: 0.7rem; min-width: 20px; text-align: center;">${item.cantidad}</span>
+                            <span class="px-2 font-monospace text-dark" style="font-size: 0.70rem; min-width: 20px; text-align: center;">${item.cantidad}</span>
                             <button class="btn btn-sm p-0 border-0 text-muted" style="width:22px; font-size: 0.8rem;" onclick="cambiarCantidad(${index}, 1)">+</button>
                         </div>
                     </div>
@@ -583,7 +618,6 @@ function renderizarCarritoVacio(container, totalElement) {
 
 function generarTemplateResumenPrecios(res) {
     let avisoAhorroHtml = '';
-    // Si hay un ahorro acumulado ya sea por promo individual o por volumen mayorista, lo explicitamos elegantemente
     if (res.ahorro > 0) {
         avisoAhorroHtml = `
             <div class="d-flex justify-content-between align-items-center mb-1">
@@ -649,6 +683,40 @@ window.confirmarVaciarCarrito = function () {
         }
     });
 };
+
+// --- NUEVA SECCIÓN: PRODUCTOS DESTACADOS ---
+function cargarProductosDestacados(esIndex) {
+    const contenedor = document.getElementById('contenedor-destacados');
+    if (!contenedor) return; 
+
+    const destacados = PRODUCTOS.filter(prod => prod.etiqueta !== undefined && prod.etiqueta !== null);
+
+    contenedor.innerHTML = "";
+
+    destacados.forEach(prod => {
+        let estructuraPrecios = "";
+
+        if (prod.precioOriginal && prod.precioOriginal > prod.precioMinorista) {
+            const porcentajeOff = Math.round(((prod.precioOriginal - prod.precioMinorista) / prod.precioOriginal) * 100);
+            
+            estructuraPrecios = `
+                <div class="mb-2">
+                    <span class="text-muted text-decoration-line-through small">$${prod.precioOriginal.toLocaleString(CONFIG.LOCALE)}</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="fs-5 fw-bold text-dark">$${prod.precioMinorista.toLocaleString(CONFIG.LOCALE)}</span>
+                    <span class="text-success small fw-bold">${porcentajeOff}% OFF</span>
+                </div>
+            `;
+        } else {
+            estructuraPrecios = `
+                <div class="d-flex align-items-center gap-2">
+                    <span class="fs-5 fw-bold text-dark">$${prod.precioMinorista.toLocaleString(CONFIG.LOCALE)}</span>
+                </div>
+            `;
+        }
+    });
+}
 
 // --- MULTIMEDIA / ZOOM ---
 window.abrirZoomSyM = function(imagenes, indexInicial) {
