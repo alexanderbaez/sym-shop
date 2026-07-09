@@ -534,65 +534,304 @@ const PRODUCTOS = [
     //   SECCIÓN: REGALERÍA / ELECTRO / HOGAR
     // ==========================================
     {
-        id: "reg-parlante-01",
-        nombre: "Parlante Bluetooth Portátil",
-        precioOriginal: 16000,
-        precioMinorista: 12500,
-        imagenes: ["images/parlante-ejemplo.jpg"],
+        id: "reg-01",
+        nombre: "Luz Led Emergencia Recargable 32cm",
+        precioOriginal: 12000,
+        precioMinorista: 9000,
+        imagenes: [
+            "images/Luz Led Emergencia Recargable1.jpg",
+            "images/Luz Led Emergencia Recargable2.jpg",
+        ],
         categoria: "regaleria",
         subcategoria: "tecnologia",
         etiqueta: "🔥 NUEVO",
-        descripcion: "Sonido potente de alta fidelidad, luces LED integradas y batería de larga duración."
+        descripcion: "Unidades por pack: 1, Voltaje: 5V. Luz LED con flujo luminoso de 250 a 450 lúmenes para máxima visibilidad. Autonomía de 5 a 8 horas para uso prolongado. Batería recargable de 800 mAh para múltiples usos. Tiempo de carga de solo 2 horas para mayor eficiencia. Incluye manija para fácil transporte y colocación."
     },
     {
-        id: "reg-luces-01",
-        nombre: "Luces LED Decorativas Rgb",
+        id: "reg-02",
+        nombre: "Jarra Eléctrica Raf Electrico R.7873 2.3l",
         precioOriginal: null,
-        precioMinorista: 6800,
-        imagenes: ["images/luces-rgb.jpg"],
+        precioMinorista: 21000,
+        imagenes: [
+            "images/Jarra Eléctrica Raf Electrico R.7873 2.3l1.jpg",
+            "images/Jarra Eléctrica Raf Electrico R.7873 2.3l2.jpg",
+            "images/Jarra Eléctrica Raf Electrico R.7873 2.3l3.jpg",
+            "images/Jarra Eléctrica Raf Electrico R.7873 2.3l4.jpg",
+        ],
         categoria: "regaleria",
-        subcategoria: "tecnologia",
-        descripcion: "Tira de luces LED con control remoto, ideales para ambientar habitaciones."
+        subcategoria: "hogar",
+        descripcion: "Marca: RAF. Modelo: R.7883. Color: -. Capacidad en volumen: 2.3 Litros. Materiales: Acero Inoxidable y Plástico térmico. Voltaje: 220V. Corte automático al hervir: Sí. Control de temperatura/Termómetro: No"
     },
     {
-        id: "reg-termo-01",
-        nombre: "Termo de Acero Inoxidable 1L",
-        precioOriginal: 24000,
-        precioMinorista: 18500,
-        imagenes: ["images/termo-acero.jpg"],
+        id: "reg-03",
+        nombre: "Pava Eléctrica Luo 2l",
+        precioOriginal: null,
+        precioMinorista: 25000,
+        imagenes: [
+            "images/Pava Eléctrica Luo 2l1.jpg",
+            "images/Pava Eléctrica Luo 2l2.jpg",
+        ],
         categoria: "regaleria",
         subcategoria: "hogar",
         etiqueta: "⭐ RECOMENDADO",
-        descripcion: "Mantiene el agua fría o caliente por más de 12 horas. Práctico tapón cebador."
+        descripcion: "Voltaje: 220V. Con capacidad para 2 litros. Con apagado automático. Tecnología y rapidez para tus infusiones."
     },
     {
-        id: "reg-botella-01",
-        nombre: "Botella Deportiva Motivacional",
+        id: "reg-04",
+        nombre: "Mini Planchita Pelo Masuya Flequillo Viaje Cartera",
         precioOriginal: null,
-        precioMinorista: 3500,
-        imagenes: ["images/botella-motivacional.jpg"],
+        precioMinorista: 6000,
+        imagenes: [
+            "images/Mini Planchita1.jpg",
+            "images/Mini Planchita2.jpg",
+        ],
         categoria: "regaleria",
         subcategoria: "hogar",
-        descripcion: "Con marcas de tiempo para hidratación, libre de BPA y tapa hermética antivuelco."
+        descripcion: "Marca: Masuya. Voltaje Universal: 110V - 220V (Ideal para uso internacional). Temperatura de Trabajo: 160 °C constante. Función Principal: Retoques, Flequillo, Alisado de Cabello Corto. Tamaño Ultracompacto: Aproximadamente 17 cm de largo (Máxima portabilidad)."
     },
     {
-        id: "reg-vaso-01",
-        nombre: "Vaso Térmico con Sorbete",
+        id: "reg-05",
+        nombre: "Termo De Acero Inoxidable",
         precioOriginal: null,
-        precioMinorista: 5200,
-        imagenes: ["images/vaso-termico.jpg"],
+        precioMinorista: 10000,
+        imagenes: [
+            "images/Termo De Acero Inoxidable1.jpg",
+            "images/Termo De Acero Inoxidable2.jpg",
+
+        ],
         categoria: "regaleria",
         subcategoria: "hogar",
-        descripcion: "Ideal para café helado o infusiones calientes. Cómodo agarre ergonómico."
+        descripcion: "Su diseño práctico y portátil es ideal para llevarlo fácilmente con vos a todos lados. La construcción de acero inoxidable lo hace resistente a golpes y mantiene la temperatura por más tiempo."
     },
     {
-        id: "reg-encendedor-01",
-        nombre: "Encendedor Eléctrico Plasma USB",
-        precioOriginal: 5800,
-        precioMinorista: 4500,
-        imagenes: ["images/encendedor-plasma.jpg"],
+        id: "reg-06",
+        nombre: "Parlante Luz Led Usb Bluetooth",
+        precioOriginal: null,
+        precioMinorista: 14000,
+        imagenes: [
+            "images/Parlante Luz Led Usb Bluetooth1.jpg",
+            "images/Parlante Luz Led Usb Bluetooth2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "El parlante A012 con luz LED y conectividad Bluetooth es la solución perfecta para quienes buscan una experiencia auditiva envolvente y visualmente atractiva. Su diseño moderno y elegante se adapta a cualquier ambiente, ya sea en casa, en una reunión, en una fiesta o en la playa. Con su alimentación USB, disfrutarás de horas de música sin preocuparte por la batería."
+    },
+    {
+        id: "reg-07",
+        nombre: "Auriculares Bluetooth M10 Pro",
+        precioOriginal: null,
+        precioMinorista: 11000,
+        imagenes: [
+            "images/Auriculares Bluetooth M10 Pro1.jpg",
+            "images/Auriculares Bluetooth M10 Pro2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "ecnología Bluetooth 5.2 que asegura conexión estable hasta 10 metros para mayor libertad de movimiento. Batería de 50mAh en auriculares y 2000mAh en estuche que permite hasta 5 horas de música y carga adicional. Pantalla digital LED en el estuche que muestra el nivel de batería para un control visual rápido y preciso. Función manos libres con micrófono integrado para atender llamadas sin necesidad de sacar el celular. Tecnología TWS que ofrece sonido estéreo envolvente y sincronización automática entre ambos auriculares."
+    },
+    {
+        id: "reg-08",
+        nombre: "Encendedor Chispero Electrico Cocina Horno Fexible Usb",
+        precioOriginal: null,
+        precioMinorista: 7000,
+        imagenes: [
+            "images/Encendedor Chispero Electrico Cocina Horno Fexible Usb1.jpg",
+            "images/Encendedor Chispero Electrico Cocina Horno Fexible Usb2.jpg",
+        ],
         categoria: "regaleria",
         subcategoria: "hogar",
-        descripcion: "Recargable vía USB, antiviento, ideal para la cocina o camping."
-    }
+        descripcion: "Encendedor eléctrico reutilizable. Recargable con batería incorporada para usar más de 100veces/carga. Tapa de protección del botón para evitar encender accidentalmente. Se apaga automáticamente después de encender 7 segundos. Chispa eléctrica resistente al viento, fácil de operar y encender al aire libre. Aplica en cocina, velas, fuegos artificiales, barbacoa, deportes al exterior como campismo, senderimos etc."
+    },
+    {
+        id: "reg-09",
+        nombre: "Procesadora Eléctrica Silver Love 400w Modelo Kk-666s",
+        precioOriginal: null,
+        precioMinorista: 26000,
+        imagenes: [
+            "images/Procesadora Eléctrica Silver Love1.jpg",
+            "images/Procesadora Eléctrica Silver Love2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "hogar",
+        descripcion: "La Procesadora Eléctrica Silver Love KK-666S es la herramienta ideal para quienes buscan eficiencia y funcionalidad en la cocina. Con una potencia de 400 W, este electrodoméstico permite procesar ingredientes de manera rápida y efectiva, facilitando la preparación de tus recetas favoritas. Su vaso licuador tiene una capacidad de 400 mL, perfecto para porciones individuales o pequeñas preparaciones."
+    },
+    {
+        id: "reg-10",
+        nombre: "Parlante Bluetooth Rgb Inhalambrico Jsjz Jz-1190",
+        precioOriginal: null,
+        precioMinorista: 20000,
+        imagenes: [
+            "images/Parlante Bluetooth Rgb1.jpg",
+            "images/Parlante Bluetooth Rgb2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "Voltaje: 220V. Tipo de parlante: altavoz bluetooth portátil cuenta con luces led rgb compatible con usb y tarjeta tf para reproducción directa de música. Con conectividad bluetooth. Tiene luces led. Lugar de colocación: escritorio y mesa y sobremesa."
+    },
+    {
+        id: "reg-11",
+        nombre: "Adaptador Enchufe Universal Viajero Ingles Europeo",
+        precioOriginal: null,
+        precioMinorista: 2000,
+        imagenes: [
+            "images/Adaptador Enchufe Universal1.jpg",
+            "images/Adaptador Enchufe Universal2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "hogar",
+        descripcion: "Voltaje: 220V. Tipo de puerto: americano. Tipo de patas: americana. Con 1 puerto. Con 2 patas."
+    },
+    {
+        id: "reg-12",
+        nombre: "Termo Tereré Piturro 2 Litros + Vaso",
+        precioOriginal: null,
+        precioMinorista: 26000,
+        imagenes: [
+            "images/Termo Tereré1.jpg",
+            "images/Termo Tereré2.jpg",
+            "images/Termo Tereré3.jpg",
+            "images/Termo Tereré4.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "hogar",
+        descripcion: "Descubre el Termo Tereré Piturro de 2 Litros, una opción ideal para quienes disfrutan de bebidas frías y calientes en cualquier momento del día. Con una capacidad de 1,9 litros, este termo es perfecto para compartir con amigos o disfrutar de una refrescante bebida en solitario. Su diseño atractivo y funcionalidad lo convierten en un accesorio esencial para tus días al aire libre."
+    },
+    {
+        id: "reg-13",
+        nombre: "Termo Sensor Led Temperatura Botella 500 Ml Acero Inoxidable",
+        precioOriginal: null,
+        precioMinorista: 10000,
+        imagenes: [
+            "images/Termo Sensor Led1.jpg",
+            "images/Termo Sensor Led2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "hogar",
+        descripcion: "Sistema de tapa a rosca asegura un sellado hermético para mantener la temperatura sin derrames."
+    },
+    {
+        id: "reg-14",
+        nombre: "Silla Plegable Camping Taburete Portátil",
+        precioOriginal: null,
+        precioMinorista: 23000,
+        imagenes: [
+            "images/Silla Plegable Camping1.jpg",
+            "images/Silla Plegable Camping2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "hogar",
+        descripcion: "Material de la estructura PVC reforzado y asiento de Plastico reforzado. Dimensiones: 45cm de alto x 26cm de ancho. Soporta hasta 150kg."
+    },
+    {
+        id: "reg-15",
+        nombre: "Set De Higiene Y Accesorios Para Bebé 6 Piezas",
+        precioOriginal: null,
+        precioMinorista: 9000,
+        imagenes: [
+            "images/Set De Higiene Para Bebé1.jpg",
+            "images/Set De Higiene Para Bebé2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "hogar",
+        descripcion: "El estuche es compacto, fácil de transportar y asegura que todos los accesorios de higiene estén bien protegidos y organizados."
+    },
+    {
+        id: "reg-16",
+        nombre: "Estabilizador Genérico Ay-49u Para Cámara Y Celular",
+        precioOriginal: null,
+        precioMinorista: 10000,
+        imagenes: [
+            "images/Estabilizador Genérico Ay-49u Para Cámara Y Celular1.jpg",
+            "images/Estabilizador Genérico Ay-49u Para Cámara Y Celular2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "kit videos y fotografiás : Incluyendo un soporte de mano en forma de U, luz de vídeo mini LED, un micrófono, un soporte de teléfono y un control remoto, adecuado para smartphone/cámara, grabación de vídeo."
+    },
+    {
+        id: "reg-17",
+        nombre: "Lámpara De Emergencia Solar Recargable Para Exteriores",
+        precioOriginal: null,
+        precioMinorista: 23000,
+        imagenes: [
+            "images/Lámpara De Emergencia1.jpg",
+            "images/Lámpara De Emergencia2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "Esta potente luz LED portátil que funciona con energía solar combina iluminación, carga y movilidad en un solo dispositivo, lo que la hace perfecta for trabajar al aire libre, acampar, emergencias o como fuente de energía auxiliar for el hogar. Equipado con una batería de litio de gran capacidad (4000 mAh) y un panel solar de alta eficiencia, se carga automáticamente durante el día y proporciona hasta 12 horas de iluminación continua durante la noche."
+    },
+    {
+        id: "reg-18",
+        nombre: "Tensiómetro Digital Automático De Brazo Pantalla Lcd",
+        precioOriginal: null,
+        precioMinorista: 12000,
+        imagenes: [
+            "images/Tensiómetro Digital1.jpg",
+            "images/Tensiómetro Digital2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "ensiómetro automático de brazo. Mide la presión arterial y pulso. Circunferencia del brazalete mínima de 25cm y máxima de 43cm. Con indicador de error de movimiento. Incluye brazalete."
+    },
+    {
+        id: "reg-19",
+        nombre: "Inhalador nebulizador portátil inalámbrico ultrasónico Silent Usb para adultos y niños",
+        precioOriginal: null,
+        precioMinorista: 18000,
+        imagenes: [
+            "images/Inhalador nebulizador1.jpg",
+            "images/Inhalador nebulizador2.jpg",
+            "images/Inhalador nebulizador3.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "Nebulizador ultrasónico con frecuencia de 2,2 MHz para tratamientos efectivos. Capacidad de nebulización de 5 mL para dosis adecuadas. Tasa de nebulización de 0.2 mL/min para tratamientos eficientes. Diseño portátil y liviano, ideal para llevar a cualquier lugar. Incluye máscaras para adultos y niños, adaptándose a todas las edades. Alimentación mediante pila o USB para mayor comodidad."
+    },
+    {
+        id: "reg-20",
+        nombre: "Termo Mate Autocebante Matelisto Acero Inox",
+        precioOriginal: null,
+        precioMinorista: 25000,
+        imagenes: [
+            "images/Termo Mate Autocebante1.jpg",
+            "images/Termo Mate Autocebante2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "Conserva el agua fría y caliente hasta por 12 horas. Exterior de acero inoxidable e interior de acero inoxidable."
+    },
+    {
+        id: "reg-21",
+        nombre: "Auriculares Bluetooth Inalámbricos P47 Over-ear con Micrófono y Radio",
+        precioOriginal: null,
+        precioMinorista: 9000,
+        imagenes: [
+            "images/Auriculares Bluetooth Inalámbricos P471.jpg",
+            "images/Auriculares Bluetooth Inalámbricos P472.jpg",
+            "images/Auriculares Bluetooth Inalámbricos P473.jpg",
+
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "Bluetooth 5 para una conectividad más rápida y estable. Duración máxima de la batería de 6 horas para uso prolongado. 20 Hz - 20 kHz de respuesta en frecuencia para sonido equilibrado. Capacidad de la batería de 400 mAh, ideal para sesiones de entretenimiento. Modo manos libres para mayor comodidad al utilizar. Es a prueba de agua, protegiendo los auriculares en condiciones húmedas."
+    },
+    {
+        id: "reg-22",
+        nombre: "Taza Térmica Batidora Automática Magnética Café Té",
+        precioOriginal: null,
+        precioMinorista: 10000,
+        imagenes: [
+            "images/Taza Térmica Batidora1.jpg",
+            "images/Taza Térmica Batidora2.jpg",
+        ],
+        categoria: "regaleria",
+        subcategoria: "tecnologia",
+        descripcion: "Práctica, cómoda y funcional, esta taza mezcladora automática es ideal para preparar café, té, chocolatada, leche, suplementos o cualquier bebida que necesite una mezcla rápida y pareja. Su sistema de auto mezclado se activa fácilmente desde el botón ubicado en el mango, generando un movimiento interno que ayuda a integrar el contenido sin necesidad de usar cuchara."
+    },
+
+
+
+
+
 ];
