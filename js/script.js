@@ -519,7 +519,22 @@ window.renderizarListaCarrito = function () {
     const resCalculo = calcularTotalCarrito();
     const unidadesTotales = obtenerUnidadesTotales();
 
-    // Detectamos en qué nivel de carpeta estamos para corregir la ruta de la imagen
+    // --- ACCIÓN INMEDIATA Y DEFINITIVA: Ocultamos los nodos para que no puedan mostrarse nunca ---
+    const txtProgreso = document.getElementById('ux-progress-text');
+    const pctProgreso = document.getElementById('ux-progress-percent');
+    const barProgreso = document.getElementById('ux-progress-bar-fill');
+    
+    if (txtProgreso) txtProgreso.style.display = "none";
+    if (pctProgreso) pctProgreso.style.display = "none";
+    if (barProgreso) {
+        const contenedorPadreBarra = barProgreso.closest('.progress') || barProgreso.parentElement;
+        if (contenedorPadreBarra) contenedorPadreBarra.style.display = "none";
+        // Si hay un contenedor blanco intermedio envolviendo la barra, lo ocultamos
+        if (contenedorPadreBarra.parentElement && contenedorPadreBarra.parentElement.classList.contains('bg-white')) {
+            contenedorPadreBarra.parentElement.style.display = "none";
+        }
+    }
+
     const path = window.location.pathname;
     const esDetalle = path.endsWith('producto.html') || path.endsWith('detalle.html');
 
@@ -537,7 +552,6 @@ window.renderizarListaCarrito = function () {
     estado.carrito.forEach((item, index) => {
         const prodMatch = PRODUCTOS.find(p => String(p.id) === String(item.id));
         
-        // --- LOGICA DE CORRECCIÓN DE RUTA PARA LA IMAGEN ---
         let imgUrl = item.imagen;
         if (esDetalle) {
             if (imgUrl.startsWith('./')) {
@@ -546,20 +560,16 @@ window.renderizarListaCarrito = function () {
                 imgUrl = `../${imgUrl}`;
             }
         } else {
-            // Si estamos en el index.html, aseguramos que empiece con ./ si no lo tiene
             if (!imgUrl.startsWith('./') && !imgUrl.startsWith('../') && !imgUrl.startsWith('http')) {
                 imgUrl = `./${imgUrl}`;
             }
         }
 
         let precioAplicado = prodMatch ? prodMatch.precioMinorista : item.precio;
-        if (resCalculo.esMayorista && prodMatch && prodMatch.precioMayorista !== null) {
-            precioAplicado = prodMatch.precioMayorista;
-        }
 
         let subvistaPreciosCarrito = `<span class="text-muted d-block mt-0.5" style="font-size: 0.7rem;">$${precioAplicado.toLocaleString(CONFIG.LOCALE)} c/u</span>`;
         
-        if (!resCalculo.esMayorista && prodMatch?.precioOriginal && prodMatch.precioOriginal > prodMatch.precioMinorista) {
+        if (prodMatch?.precioOriginal && prodMatch.precioOriginal > prodMatch.precioMinorista) {
             subvistaPreciosCarrito = `
                 <div class="mt-0.5" style="line-height: 1.2;">
                     <span class="text-muted text-decoration-line-through" style="font-size: 0.65rem; opacity: 0.7;">$${prodMatch.precioOriginal.toLocaleString(CONFIG.LOCALE)}</span>
@@ -599,7 +609,10 @@ window.renderizarListaCarrito = function () {
     });
 
     container.innerHTML = cartHtml;
-    if (totalElement) totalElement.innerHTML = generarTemplateResumenPrecios(resCalculo);
+    
+    if (totalElement) {
+        totalElement.innerHTML = generarTemplateResumenPrecios(resCalculo);
+    }
 };
 
 function renderizarCarritoVacio(container, totalElement) {
@@ -617,26 +630,45 @@ function renderizarCarritoVacio(container, totalElement) {
 }
 
 function generarTemplateResumenPrecios(res) {
-    let avisoAhorroHtml = '';
-    if (res.ahorro > 0) {
-        avisoAhorroHtml = `
-            <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="text-success" style="font-size: 0.72rem; font-weight: 500;">Estás ahorrando:</span>
-                <span class="text-success fw-bold" style="font-size: 0.8rem;">-$${res.ahorro.toLocaleString(CONFIG.LOCALE)}</span>
-            </div>
-        `;
+    let ahorroTotal = 0;
+    
+    // Calculamos el ahorro buscando de forma segura en las propiedades mapeadas del carrito
+    if (estado.carrito && Array.isArray(estado.carrito)) {
+        estado.carrito.forEach(item => {
+            const prodMatch = PRODUCTOS.find(p => String(p.id) === String(item.id));
+            if (prodMatch?.precioOriginal && prodMatch.precioOriginal > prodMatch.precioMinorista) {
+                ahorroTotal += (prodMatch.precioOriginal - prodMatch.precioMinorista) * item.cantidad;
+            }
+        });
+    }
+
+    let htmlAhorro = '';
+    if (ahorroTotal > 0) {
+        htmlAhorro = `
+            <div class="d-flex justify-content-between align-items-center w-100 mb-2" style="font-size: 0.85rem; color: #198754;">
+                <span class="fw-medium">Estás ahorrando:</span>
+                <span class="fw-bold">-$${ahorroTotal.toLocaleString(CONFIG.LOCALE)}</span>
+            </div>`;
     }
 
     return `
         <div class="text-end w-100 mt-2">
-            ${avisoAhorroHtml}
-            <div class="d-flex justify-content-between align-items-center mt-2 pt-2" style="border-top: 1px solid rgba(0,0,0,0.06);">
+            ${htmlAhorro}
+
+            <div class="d-flex justify-content-between align-items-center mt-1 pt-2" style="border-top: 1px solid rgba(0,0,0,0.06);">
                 <span class="text-muted text-uppercase" style="font-size: 0.65rem; letter-spacing: 1.2px;">Total estimado</span>
                 <span class="fw-bold" style="font-size: 1.25rem; color: #000;">$${res.total.toLocaleString(CONFIG.LOCALE)}</span>
             </div>
-            <p class="text-muted text-start mt-3 mb-0 p-2.5" style="font-size: 0.62rem; line-height: 1.4; background: #fafafa; border: 1px solid rgba(0,0,0,0.04);">
-                <i class="fas fa-info-circle text-dark me-1" style="opacity: 0.6;"></i> El pedido se procesará mediante nuestra plataforma de asistencia en WhatsApp. Coordinaremos los métodos de entrega de forma personalizada.
-            </p>
+            
+            <div class="text-start mt-3 p-2.5" style="font-size: 0.65rem; line-height: 1.4; background: #fffcf6; border: 1px solid #f5ebd5; border-radius: 6px; color: #7c5e28;">
+                <i class="fas fa-info-circle me-1"></i> <strong>¿Cómo funciona tu pedido?</strong> Al presionar el botón de abajo, se armará tu lista de compras y serás redirigido/a automáticamente a WhatsApp. Allí vas a <strong>coordinar el método de pago y el envío</strong> de manera directa y personalizada con el vendedor.
+            </div>
+
+            <button class="btn w-100 py-2.5 mt-3 fw-bold text-uppercase text-white d-flex align-items-center justify-content-center gap-2" 
+                    style="background: #25D366; border: none; border-radius: 6px; font-size: 0.75rem; letter-spacing: 0.8px; box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);"
+                    onclick="enviarPedidoWhatsApp()">
+                <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Enviar Pedido por WhatsApp
+            </button>
         </div>`;
 }
 
@@ -755,7 +787,6 @@ window.abrirZoomSyM = function(imagenes, indexInicial) {
     modal.querySelector('#close-zoom').onclick = () => modal.remove();
 }
 
-// --- CONTROLADOR DE SALIDA / WHATSAPP CHECKOUT ---
 window.enviarPedidoWhatsApp = function() {
     if (estado.carrito.length === 0) {
         Swal.fire({
@@ -775,13 +806,11 @@ window.enviarPedidoWhatsApp = function() {
     estado.carrito.forEach((item, index) => {
         const prodMatch = PRODUCTOS.find(p => String(p.id) === String(item.id));
         
+        // Tomamos el precio estándar sin evaluar lógica mayorista
         let precioIndividual = prodMatch ? prodMatch.precioMinorista : item.precio;
         let anotacionDescuento = '';
 
-        if (resCalculo.esMayorista && prodMatch && prodMatch.precioMayorista !== null) {
-            precioIndividual = prodMatch.precioMayorista;
-        } else if (!resCalculo.esMayorista && prodMatch?.precioOriginal && prodMatch.precioOriginal > prodMatch.precioMinorista) {
-            // Si el cliente compra minorista pero el producto en sí venía con una oferta individual
+        if (prodMatch?.precioOriginal && prodMatch.precioOriginal > prodMatch.precioMinorista) {
             anotacionDescuento = ` *(¡Oferta Web!)*`;
         }
         
@@ -797,10 +826,6 @@ window.enviarPedidoWhatsApp = function() {
     mensaje += `------------------------------------------\n`;
     mensaje += `*Resumen Final:*\n`;
     mensaje += `• Total de prendas: ${unidadesTotales}\n`;
-    mensaje += `• Tipo de Compra: ${resCalculo.esMayorista ? 'Mayorista 🎁' : 'Minorista'}\n`;
-    if (resCalculo.ahorro > 0) {
-        mensaje += `• Total Descontado: $${resCalculo.ahorro.toLocaleString(CONFIG.LOCALE)}\n`;
-    }
     mensaje += `• *TOTAL A PAGAR: $${resCalculo.total.toLocaleString(CONFIG.LOCALE)}*\n\n`;
     mensaje += `Quedo atento/a para coordinar el pago y envío de las prendas. ¡Muchas gracias!`;
 
