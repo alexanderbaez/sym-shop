@@ -13,12 +13,10 @@ const PRODUCTOS = [
         precioMinorista: 2000, 
         talles: ["M", "L", "XL", "XXL"],
         imagenes: [
-            "images/Bombacha de Señora con Encaje1.jpg",
-            "images/Bombachas encaje FRENTE.png",
-            "images/Bombacha encaje DORSAL.png"
+            "images/buzoAdidas.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "pantalon",
         descripcion: "Diseño de encaje de alta calidad, tiro alto y corte clásico."
     },
     {
@@ -28,13 +26,10 @@ const PRODUCTOS = [
         precioMinorista: 2500,
         talles: ["S", "M", "L"],
         imagenes: [
-            "images/Culote de Algodón1.png",
-            "images/Culote de Algodón2.png",
-            "images/Culote algodon FRENTE.png", 
-            "images/Culote algodon DORSAL.png"
+            "images/PonchoConBoche.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "busos",
         stock: false,
         descripcion: "Modelo de tiro medio en algodón suave. Ideal para el confort de cada día."
     },
@@ -45,12 +40,10 @@ const PRODUCTOS = [
         precioMinorista: 2500,
         talles: ["S", "M", "L"],
         imagenes: [
-            "images/Culote de Encaje1.jpg",
-            "images/Culote encaje FRENTE.png",
-            "images/Culote encaje DORSAL.png"
+            "images/PijamaPiel.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "conjunto",
         etiqueta: "🔥 MÁS VENDIDO",
         descripcion: "Sin costuras, no se marca. Perfecto para sentirte cómoda y sensual."
     },
@@ -61,309 +54,195 @@ const PRODUCTOS = [
         precioMinorista: 1670,
         talles: ["S", "M", "L"],
         imagenes: [
-            "images/Less de Algodón1.jpg",
-            "images/Less de Algodón2.jpg",
-            "images/Less algodon FRENTE.png",
-            "images/Less algodon DORSAL.png"
+            "images/ruanas1.jpeg",
+            "images/ruanas2.jpeg",
+            "images/ruanas3.jpeg",
+            "images/ruanas4.jpeg"
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "bufanda",
+        etiqueta: "🔥 MÁS VENDIDO",
         descripcion: "Tejido de algodón con terminaciones ultra-cómodas y estampada en corazones."
     },
     {
-        id: "prod-b5-puntilla",
+        id: "prod-b5",
         nombre: "Less de Algodón y Puntilla",
         precioOriginal: null,
         precioMinorista: 1670,
         talles: ["S", "M", "L"],
         imagenes: [
-            "images/Less de Algodón y Puntilla0.1.jpg",
-            "images/Less de Algodón y Puntilla1.jpg",
-            "images/Less de Algodón y Puntilla2.jpg",
-            "images/Less algodon y puntilla FRENTE.png",
-            "images/Less algodon puntilla DORSAL.png"
+            "images/BufandonesNubes1.jpeg",
+            "images/BufandonesNubes2.jpeg",
+            "images/BufandonesNubes3.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "bufanda",
         descripcion: "Máxima cobertura frontal con un toque de sensualidad y comodidad."
     },
     {
-        id: "prod-b-especial",
+        id: "prod-b6",
         nombre: "Less de Algodón en Talles Especiales",
         precioOriginal: 2400,
         precioMinorista: 1670,
         talles: ["XL", "XXL", "XXXL"],
         imagenes: [
-            "images/Less de Algodón en Talles Especiales1.png",
-            "images/Less de Algodón en Talles Especiales2.png",
-            "images/Less Frente.png", 
-            "images/Less Dorsal.png"
+            "images/JeanDamaFrente.jpeg",
+            "images/JeanDamaDorsal.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "jean",
         etiqueta: "⚡ POCO STOCK",
         descripcion: "Con su tejido de algodón otorgan un toque de sensualidad y comodidad."
     },
     {
-        id: "prod-b5",
+        id: "prod-b7",
         nombre: "Less Regulables",
         precioOriginal: null,
         precioMinorista: 1770,
         talles: ["Único"],
         imagenes: [
-            "images/Less Regulables3.png", 
-            "images/Less Regulables1.jpeg", 
-            "images/Less Regulables2.jpeg",
-            "images/Less regulable FRENTE.png"
+            "images/jeanDama1.jpeg", 
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "jean",
         descripcion: "Confeccionadas en algodón con encaje ofrecen un toque sexy y cómodo."
     },
     {
-        id: "prod-b6",
+        id: "prod-b8",
         nombre: "Bombachas de Algodon con detalles de encaje",
         precioOriginal: null,
         precioMinorista: 2500,
         talles: ["M", "L", "XL"],
         imagenes: [
-            "images/Bombachas de Algodon con detalles de encaje1.jpg",
-            "images/Bombachas-de-Algodon-con-detalles-de-encaje1 (1).png",
-            "images/Bombachas-de-Algodon-con-detalles-de-encaje1.png",
-            "images/Bombachas-de-Algodon-con-detalles-de-encaje3.png"
+            "images/jeanDamaCorteAbajo1.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "jean",
         descripcion: "Confeccionadas en algodón con encaje ofrecen un toque sexy y cómodo."
     },
     {
-        id: "prod-b7",
+        id: "prod-b9",
         nombre: "Less Calvin Klein",
         precioOriginal: 3000,
         precioMinorista: 2000,
         talles: ["S", "M", "L"],
         imagenes: [
-            "images/Less Calvin Klein1.jpeg",
-            "images/Less Calvin Klein2.png"
+            "images/PantalonCorderoiDama.jpeg",
         ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "pantalon",
         etiqueta: "🔥 TENDENCIA",
         descripcion: "Confeccionadas en algodón con encaje ofrecen un toque sexy y cómodo."
     },
     {
-        id: "prod-b8",
+        id: "prod-b10",
         nombre: "Vedetina",
         precioOriginal: null,
         precioMinorista: 1740,
         talles: ["M", "L", "XL"],
-        imagenes: ["images/Vedetina1.jpg"],
+        imagenes: ["images/PantalonDamaFino.jpeg"],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "pantalon",
         descripcion: "Confeccionadas en algodón con encaje ofrecen un toque sexy y cómodo."
     },
     {
-        id: "prod-b9",
+        id: "prod-b11",
         nombre: "Boxers Dama con Faja",
         precioOriginal: 6000,
         precioMinorista: 4500,
         talles: ["M", "L", "XL"],
-        imagenes: ["images/Boxers Dama con Faja0.1.png"],
+        imagenes: ["images/pantalonDamaGrueso.jpeg"],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "pantalon",
         descripcion: "Confeccionadas en algodón con faja modeladora integrada."
     },
     {
-        id: "prod-b11",
+        id: "prod-b12",
         nombre: "Smart Sexi",
         precioOriginal: null,
         precioMinorista: 2250,
         talles: ["S", "M", "L"],
-        imagenes: ["images/Smart Sexi1.png"],
+        imagenes: ["images/conjuntoAdidas.jpeg"],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "conjunto",
         stock: false,
         descripcion: "Confeccionadas en morley, brinda confort. Disponibles en colores tendencia."
     },
     {
-        id: "prod-b12",
+        id: "prod-b13",
         nombre: "Culote Less Con Faja",
         precioOriginal: null,
         precioMinorista: 3000,
         talles: ["M", "L", "XL"],
-        imagenes: ["images/Culote Less Con Faja0.1.png"],
+        imagenes: [
+            "images/BusoDamaConPiel.jpeg",
+            "images/BusoDamaConPiel2.jpeg",
+        ],
         categoria: "mujer",
-        subcategoria: "bombachas",
+        subcategoria: "pantalon",
         descripcion: "Confeccionadas en morley, brinda confort. Disponibles en colores tendencia."
     },
     {
-        id: "conj-01",
+        id: "prod-b14",
         nombre: "Red Velvet",
         precioOriginal: 21000,
         precioMinorista: 15000,
         talles: ["85", "90", "95", "100"],
-        imagenes: ["images/Red Velvet0.jpeg"],
+        imagenes: ["images/CalzaDama.jpeg"],
         categoria: "mujer",
-        subcategoria: "conjuntos",
+        subcategoria: "pantalon",
         etiqueta: "🔥 IMPERDIBLE",
         descripcion: "La sofisticación del encaje se combina con un design tipo longline para ofrecerte un ajuste impecable."
     },
     {
-        id: "conj-02",
+        id: "prod-b15",
         nombre: "Combo Alo - Remera + top + calza + medias",
         precioOriginal: 35000,
         precioMinorista: 25000,
         talles: ["S", "M", "L"],
-        imagenes: ["images/Combo Alo - Remera + top + calza + medias1.jpg"],
+        imagenes: ["images/PantalonPalaso.jpeg"],
         categoria: "mujer",
-        subcategoria: "conjuntos",
+        subcategoria: "pantalon",
         etiqueta: "⚡ ÚLTIMOS COMBOS",
         descripcion: "Combo de lycra que incluye remera, top, medias y short de lycra sin frunce."
     },
     {
-        id: "conj-03",
+        id: "prod-b16",
         nombre: "Conjunto D'lirio con tazas desmontables",
         precioOriginal: null,
         precioMinorista: 10500,
         talles: ["S", "M", "L"],
-        imagenes: ["images/Conjunto D'lirio con tazas desmontables1.png"],
+        imagenes: [
+            "images/PantalonBuso1.jpeg",
+            "images/PantalonBuso2.jpeg",
+        ],
         categoria: "mujer",
-        subcategoria: "conjuntos",
+        subcategoria: "pantalon",
         descripcion: "Diseño del top de morley con tazas desmontables y calza con frunce, faja y levanta glúteos."
     },
     {
-        id: "conj-04",
+        id: "prod-b17",
         nombre: "Conjunto Persefone",
         precioOriginal: null,
         precioMinorista: 7000,
         talles: ["85", "90", "95"],
-        imagenes: ["images/Conjunto Persefone1.jpg"],
+        imagenes: ["images/PantalonLineaBlanca.jpeg"],
         categoria: "mujer",
-        subcategoria: "conjuntos",
+        subcategoria: "pantalon",
         descripcion: "La base perfecta. Cómodo morley y puntilla, ideal para usar bajo cualquier prenda."
     },
     {
-        id: "conj-05",
+        id: "prod-b18",
         nombre: "Conjunto Roma",
         precioOriginal: 14000,
         precioMinorista: 10000,
         talles: ["85", "90", "95", "100"],
-        imagenes: ["images/Conjunto Roma FRENTE.png"],
+        imagenes: ["images/PantalonDamaMorado.jpeg"],
         categoria: "mujer",
-        subcategoria: "conjuntos",
+        subcategoria: "pantalon",
         descripcion: "Copas triangulares de algodón con delicados detalles de encaje."
     },
-    {
-        id: "conj-06",
-        nombre: "Calza (Lycra)",
-        precioOriginal: null,
-        precioMinorista: 4500,
-        talles: ["S", "M", "L", "XL"],
-        imagenes: ["images/Calza (Lycra)1.png"],
-        categoria: "mujer",
-        subcategoria: "conjuntos",
-        descripcion: "Color de tendencia. Confeccionado en lycra, sin frunce. Ideal para entrenar."
-    },
-    {
-        id: "conj-07",
-        nombre: "Conjunto Top + Calza (Negro)",
-        precioOriginal: null,
-        precioMinorista: 10000,
-        talles: ["S", "M", "L"],
-        imagenes: ["images/Conjunto Top + Calza (Negro)1.png"],
-        categoria: "mujer",
-        subcategoria: "conjuntos",
-        etiqueta: "⚡ ¡VUELA!",
-        descripcion: "Últimos en color negro. De morley con un top de tazas desmontables y calza con frunce."
-    },
-    {
-        id: "conj-08",
-        nombre: "Conjunto Top + Pollera Pantalon",
-        precioOriginal: null,
-        precioMinorista: 16500,
-        talles: ["S", "M", "L"],
-        imagenes: ["images/Conjunto Top + Pollera Pantalon0.1.png"],
-        categoria: "mujer",
-        subcategoria: "conjuntos",
-        descripcion: "Color de tendencia. Confeccionado en lycra, elegancia y comodidad en una pieza."
-    },
-    {
-        id: "conj-09",
-        nombre: "Conjunto Vicblack",
-        precioOriginal: 9500,
-        precioMinorista: 7500,
-        talles: ["85", "90", "95"],
-        imagenes: ["images/Conjunto Vicblack1.png"],
-        categoria: "mujer",
-        subcategoria: "conjuntos",
-        descripcion: "Colores de la nueva temporada. Con un diseño cómodo en morley con detalles de puntilla."
-    },
-    {
-        id: "conj-012",
-        nombre: "Conjunto Deportivo",
-        precioOriginal: null,
-        precioMinorista: 7000,
-        talles: ["S", "M", "L"],
-        imagenes: ["images/Conjunto Deportivo1.jpeg"],
-        categoria: "mujer",
-        subcategoria: "conjuntos",
-        descripcion: "Colores de la nueva temporada con detalles de puntilla y tazas desmontables."
-    },
-    {
-        id: "conj-013",
-        nombre: "Sports Bell",
-        precioOriginal: null,
-        precioMinorista: 6500,
-        talles: ["90", "95", "100", "105"],
-        imagenes: ["images/Sports Bell1.jpg"],
-        categoria: "mujer",
-        subcategoria: "conjuntos",
-        descripcion: "Corpiño importado armado sin aro y con 4 broches para mayor ajuste."
-    },
-    {
-        id: "acc-ok-m1",
-        nombre: "Pack Medias Alo Dama (x3)",
-        precioOriginal: null,
-        precioMinorista: 5500,
-        talles: ["Único"],
-        imagenes: ["images/Medias-Alo-dama.jpg"],
-        categoria: "mujer",
-        subcategoria: "medias",
-        descripcion: "Pack de 3 pares de medias cómodas para uso diario."
-    },
-    {
-        id: "acc-med-05",
-        nombre: "Medias Sport Girls Socks",
-        precioOriginal: null,
-        precioMinorista: 1500,
-        talles: ["Único"],
-        imagenes: ["images/medias-femenina.png"],
-        categoria: "mujer",
-        subcategoria: "medias",
-        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
-    },
-    {
-        id: "acc-med-06",
-        nombre: "Medias Fasihon women's Socks",
-        precioOriginal: null,
-        precioMinorista: 1500,
-        talles: ["Único"],
-        imagenes: ["images/medias-femenina2.png"],
-        categoria: "mujer",
-        subcategoria: "medias",
-        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
-    },
-    {
-        id: "acc-med-07",
-        nombre: "Medias Women's Socks",
-        precioOriginal: null,
-        precioMinorista: 1500,
-        talles: ["Único"],
-        imagenes: ["images/medias-femenina-sport.png"],
-        categoria: "mujer",
-        subcategoria: "medias",
-        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
-    },
+    
 
     // ==========================================
     //   SECCIÓN: HOMBRE
@@ -375,11 +254,10 @@ const PRODUCTOS = [
         precioMinorista: 4000,
         talles: ["S", "M", "L", "XL", "XXL"],
         imagenes: [
-            "images/Boxer uomo1.jpg",
-            "images/Boxer uomo2.jpg"
+            "images/buzoOscuroLiso.jpeg",
         ],
         categoria: "hombre",
-        subcategoria: "boxers",
+        subcategoria: "busos",
         descripcion: "Boxer de algodón con lycra, elástico suave con logo de marca."
     },
     {
@@ -388,9 +266,12 @@ const PRODUCTOS = [
         precioOriginal: null,
         precioMinorista: 2200,
         talles: ["M", "L", "XL"],
-        imagenes: ["images/Boxers Niño1.jpg"],
+        imagenes: [
+            "images/BuzoEstanpaFrente.jpeg",
+            "images/BuzoEstanpaDorsal.jpeg",
+        ],
         categoria: "hombre",
-        subcategoria: "boxers",
+        subcategoria: "busos",
         descripcion: "Boxer de algodón con lycra, elástico suave de alta durabilidad."
     },
     {
@@ -399,39 +280,154 @@ const PRODUCTOS = [
         precioOriginal: null,
         precioMinorista: 3000,
         talles: ["M", "L", "XL", "XXL"],
-        imagenes: ["images/Slip Algodón Clásico1.png"],
+        imagenes: ["images/pantalon.jpeg"],
         categoria: "hombre",
-        subcategoria: "boxers",
+        subcategoria: "pantalon",
         descripcion: "Corte clásico, máxima comodidad y ajuste perfecto."
     },
     {
-        id: "acc-med-08",
+        id: "masc-04",
         nombre: "Medias Men",
         precioOriginal: null,
         precioMinorista: 1500,
         talles: ["Único"],
-        imagenes: ["images/medias-hombres.png"],
+        imagenes: ["images/BuzoDC.jpeg"],
         categoria: "hombre",
-        subcategoria: "medias",
+        subcategoria: "busos",
         descripcion: "Diseño urbano, suaves y de calce anatómico."
     },
     {
-        id: "acc-med-09",
+        id: "masc-05",
         nombre: "Medias Men's Socks",
         precioOriginal: null,
         precioMinorista: 1500,
         talles: ["Único"],
-        imagenes: ["images/medias-hombre.sport.png"],
+        imagenes: [
+            "images/buzo1Frente.jpeg",
+            "images/buzo1Dorsal.jpeg",
+        ],
         categoria: "hombre",
-        subcategoria: "medias",
+        subcategoria: "busos",
         descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
     },
+    {
+        id: "masc-06",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/BusoConPiel.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "busos",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-07",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/pantalonBuso.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "pantalon",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-08",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/jeanHombreClasicoChupin1.jpeg",
+            "images/jeanHombreClasicoChupin2.jpeg",
+
+        ],
+        categoria: "hombre",
+        subcategoria: "jean",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-09",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/JeanHombreClasicoRecto.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "jean",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-10",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/pantalonHombreDeBuso.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "pantalon",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-11",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/PantalonBusoHombreNike.jpeg",
+            "images/PantalonBusoHombreNike2.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "pantalon",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-12",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/busoClasico.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "pantalon",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+    {
+        id: "masc-13",
+        nombre: "Medias Men's Socks",
+        precioOriginal: null,
+        precioMinorista: 1500,
+        talles: ["Único"],
+        imagenes: [
+            "images/BusoAdidas.jpeg",
+        ],
+        categoria: "hombre",
+        subcategoria: "pantalon",
+        descripcion: "Diseño urbano, suaves y cómodas para el uso diario."
+    },
+
+
+
+
+
 
     // ==========================================
     //   SECCIÓN: NIÑOS (NENAS Y NENOS)
     // ==========================================
     {
-        id: "prod-b10",
+        id: "Niño-b1",
         nombre: "Bombacha Juvenil",
         precioOriginal: null,
         precioMinorista: 1700,
@@ -442,7 +438,7 @@ const PRODUCTOS = [
         descripcion: "Confeccionadas en algodón con diseño de guerreras K-pop."
     },
     {
-        id: "conj-10",
+        id: "Niño-b2",
         nombre: "Conjunto Inicial Nena",
         precioOriginal: null,
         precioMinorista: 3800,
@@ -453,7 +449,7 @@ const PRODUCTOS = [
         descripcion: "Diseño cómodo en morley con detalles de puntilla infantil."
     },
     {
-        id: "conj-011",
+        id: "Niño-b3",
         nombre: "Top Inicial Nena",
         precioOriginal: null,
         precioMinorista: 2000,
@@ -464,7 +460,7 @@ const PRODUCTOS = [
         descripcion: "Cómodo top de morley ideal para la etapa inicial."
     },
     {
-        id: "masc-04",
+        id: "Niño-b4",
         nombre: "Slip Algodón niño",
         precioOriginal: 2500,
         precioMinorista: 1833,
@@ -475,7 +471,7 @@ const PRODUCTOS = [
         descripcion: "Corte clásico infantil, máxima comodidad para jugar libremente."
     },
     {
-        id: "acc-01",
+        id: "Niño-b5",
         nombre: "Medias Escolares",
         precioOriginal: null,
         precioMinorista: 2000,
@@ -486,7 +482,7 @@ const PRODUCTOS = [
         descripcion: "Par de medias escolares blancas reforzadas."
     },
     {
-        id: "acc-03",
+        id: "Niño-b6",
         nombre: "Pack Medias Con Orejitas Niños (x3)",
         precioOriginal: null,
         precioMinorista: 1500,
@@ -497,7 +493,7 @@ const PRODUCTOS = [
         descripcion: "Pack de 3 pares de medias con orejitas divertidas."
     },
     {
-        id: "acc-med-04",
+        id: "Niño-b7",
         nombre: "Medias con dibujitos",
         precioOriginal: null,
         precioMinorista: 1500,
@@ -508,7 +504,7 @@ const PRODUCTOS = [
         descripcion: "Medias de algodón con tus personajes preferidos."
     },
     {
-        id: "acc-med-10",
+        id: "Niño-b8",
         nombre: "Medias For Girls Socks",
         precioOriginal: null,
         precioMinorista: 1500,
@@ -519,7 +515,7 @@ const PRODUCTOS = [
         descripcion: "Diseño urbano infantil, suaves y cómodas."
     },
     {
-        id: "acc-med-11",
+        id: "Niño-b9",
         nombre: "Medias For Boys Socks",
         precioOriginal: null,
         precioMinorista: 1500,
